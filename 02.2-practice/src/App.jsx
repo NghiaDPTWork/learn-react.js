@@ -18,8 +18,6 @@ const App = () => {
     alert(`${name}: ${content}`);
   };
   return (
-    // Để dùng được JS code trong JSX thì ta phải có {}
-
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
       <TodoNew

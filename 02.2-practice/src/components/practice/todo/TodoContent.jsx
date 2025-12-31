@@ -4,7 +4,6 @@
 */
 
 const TodoContent = ({ age, ...props }) => {
-  // console.log("Check Props: ", props);
   /* 
     Kết quả: {
               content: "Learn React.js by building projects!",
