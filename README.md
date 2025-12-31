@@ -1,12 +1,12 @@
 # React Javascript (Practice Repo)
 
-Chào mừng đến với repository thực hành của khóa học **"React Ultimate với Javascript"**. Đây là nơi tôi lưu trữ mã nguồn, ghi chú và các bài tập thực hành theo lộ trình của khóa học để xây dựng nền tảng vững chắc về ReactJS.
+Chào mừng đến với repository thực hành của khóa học **"React với Javascript"**. Đây là nơi tôi lưu trữ mã nguồn, ghi chú và các bài tập thực hành theo lộ trình của khóa học để xây dựng nền tảng vững chắc về ReactJS.
 
 ## 📚 Giới thiệu
 Repository này bao gồm các kiến thức từ cơ bản đến nâng cao về React, sử dụng JavaScript làm ngôn ngữ chính. Mục tiêu là nắm vững tư duy React (React Mindset), làm chủ các Hook, React Router và tương tác với Backend API.
 
-- **Tác giả khóa học:** Hỏi Dân IT & Eric
-- **Phiên bản React:** 18 & 19
+- **Tác giả khóa học:** Nhiều nguồn
+- **Phiên bản React:** 20
 - **Công nghệ chính:** React (Client Side Rendering - CSR), Vite, Ant Design, Axios.
 
 ---
