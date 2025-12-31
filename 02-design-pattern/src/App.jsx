@@ -3,12 +3,26 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-// function myFunction() {
-//   console.log("This is a sample function.");
-// }
+/*
+  React component về bản chất là JS functional 
 
-const myFunction = () => {
-  console.log("This is an arrow function.");
+  Vậy sự khác biệt là gì ?
+    - Tên phải là UpperCase (cái này là quy ước thôi)
+    - Trả về JSX (giống HTML nhưng có 1 số khác biệt nhỏ)
+      + class -> className
+      + for -> htmlFor
+      + style={{ color: "red", fontSize: "14px" }} (object)
+    - Sử dụng được Hooks (useState, useEffect, ...)
+    - Chỉ trả về những thứ trong () của return
+
+*/
+const MyComponent = () => {
+  return (
+    <>
+      <h2>This is my component</h2>
+      <p>Welcome to learning React!</p>
+    </>
+  );
 };
 
 const App = () => {
@@ -24,19 +38,15 @@ const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <MyComponent />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      {myFunction()}
     </>
   );
 };
