@@ -1,0 +1,195 @@
+/* src/components/practice/todo/todo.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"); /* Thêm Font Awesome cho biểu tượng */
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    135deg,
+    #74ebd5,
+    #acb6e5
+  ); /* Nền gradient nhẹ nhàng */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.todo-container {
+  background: #fff;
+  width: 100%;
+  max-width: 480px; /* Độ rộng giống trong ảnh */
+  padding: 30px;
+  border-radius: 15px; /* Bo góc mềm mại */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  text-align: center;
+}
+
+/* Tiêu đề gradient đỏ cam */
+.todo-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  background: -webkit-linear-gradient(left, #e52d27, #b31217);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Khu vực nhập liệu */
+.todo-new {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center; /* Căn giữa input và button */
+}
+
+.todo-new input {
+  width: 65%; /* Chiếm phần lớn chiều rộng */
+  padding: 12px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px 0 0 8px; /* Bo góc trái */
+  background: #f2f4f7; /* Màu nền xám nhạt */
+  outline: none;
+  color: #333;
+}
+
+.todo-new button {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #6c9eef; /* Màu xanh dương nhạt giống ảnh */
+  border: none;
+  border-radius: 0 8px 8px 0; /* Bo góc phải */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-new button:hover {
+  background: #5a8cdd;
+}
+
+/* Danh sách công việc */
+.todo-content {
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto; /* Thêm thanh cuộn nếu danh sách dài */
+}
+
+.todo-item {
+  background: #f8f9fa; /* Nền xám rất nhạt cho từng mục */
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between; /* Đẩy nội dung và nút về 2 phía */
+  align-items: center;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+  position: relative; /* Để định vị các nút icon */
+}
+
+.todo-item:hover {
+  transform: translateY(-2px); /* Hiệu ứng nổi lên khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Nhóm các nút biểu tượng (Xóa, Sửa) */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  background: #e9ecef; /* Nền xám cho nút tròn */
+  border: none;
+  color: #6c757d;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-icon.delete:hover {
+  background: #ffcccb; /* Màu nền đỏ nhạt khi hover nút xóa */
+  color: #dc3545;
+}
+
+.btn-icon.edit:hover {
+  background: #d1e7dd; /* Màu nền xanh nhạt khi hover nút sửa */
+  color: #198754;
+}
+
+/* Footer - Nút xóa tất cả */
+.todo-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.todo-footer button {
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #dc3545; /* Màu đỏ cho nút Delete All */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-footer button:hover {
+  background: #c82333;
+}
+
+/* Ẩn dòng text "0 items left" để giống ảnh mẫu */
+.todo-footer span {
+  display: none;
+}
+
+/* =========================================
+   Style cho phần Logo React (To hơn & Xoay)
+========================================= */
+
+/* 1. Định nghĩa chuyển động xoay tròn (Keyframes) */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. Style cho container bao quanh ảnh (để căn giữa đẹp hơn) */
+.todo-img {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+/* 3. Style trực tiếp cho thẻ img */
+.todo-img img {
+  width: 150px;
+  height: auto;
+  animation: spin-slow 10s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(97, 218, 251, 0.6));
+}
+
+.todo-img img:hover {
+  cursor: pointer;
+  animation: spin-slow 3s linear infinite;
+}

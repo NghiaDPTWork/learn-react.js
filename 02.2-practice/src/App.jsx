@@ -1,39 +1,24 @@
-import { useState } from "react";
+import "./components/practice/todo/todo.css";
+import TodoContent from "./components/practice/todo/TodoContent";
+import TodoNew from "./components/practice/todo/TodoNew";
+import TodoFooter from "./components/practice/todo/TodoFooter";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import MyComponent from "./components/learn/MyComponent";
-import ABC, { ThirdComponent } from "./components/learn/SecondComponent";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
+    <div className="todo-container">
+      <div className="todo-title">Todo List</div>
 
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <MyComponent />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <TodoNew />
+
+      <TodoContent />
+
+      <div className="todo-img">
+        <img src={reactLogo} alt="React Logo" />
       </div>
 
-      <ABC />
-
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      <ThirdComponent />
-    </>
+      <TodoFooter />
+    </div>
   );
 };
 
