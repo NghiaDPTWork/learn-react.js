@@ -26,8 +26,13 @@ const TodoContent = ({ age, ...props }) => {
       const data = props.data;
       ...props: chứa các props còn lại (nếu có)
       - Ưu và nhược điểm của cách này:
-        + Ưu điểm: Dễ dàng lấy trực tiếp các props cần thiết mà không cần phải truy cập qua object props nhiều lần.
-        + Nhược điểm: Nếu có quá nhiều props, việc liệt kê tất cả trong tham số hàm có thể làm cho hàm trở nên dài dòng và khó đọc.
+        + Ưu điểm: Dễ dàng lấy trực tiếp các props 
+        cần thiết mà không cần phải truy cập qua object 
+        props nhiều lần.
+        + Nhược điểm: Nếu có quá nhiều props,
+         việc liệt kê tất cả trong tham số hàm 
+         có thể làm cho hàm trở nên dài dòng và khó đọc.
+         
   */
   return (
     <div className="todo-content">

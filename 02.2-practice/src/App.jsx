@@ -14,12 +14,18 @@ const App = () => {
     city: "New York",
   };
 
+  const addNewTodo = (name, content) => {
+    alert(`${name}: ${content}`);
+  };
   return (
     // Để dùng được JS code trong JSX thì ta phải có {}
 
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
-      <TodoNew />
+      <TodoNew
+        addNewTodo={addNewTodo}
+        //
+      />
       <TodoContent
         /* 
         Ta cần phải hiểu vì sao lại truyền như vậy và truyền để làm gì ?
