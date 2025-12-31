@@ -107,7 +107,7 @@ Có 2 cách Export chính:
 
 ---
 
-### **#32 - Nested Component & Quan hệ Cha-Con**
+### **#32 & 33 - Nested Component & Quan hệ Cha-Con**
 
 **1. Khái niệm:**
 
@@ -143,3 +143,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 ```
+
+### **#34 - Props**
+
+Phải truyền từ cha snag con (Phải biết xác định cha con)
