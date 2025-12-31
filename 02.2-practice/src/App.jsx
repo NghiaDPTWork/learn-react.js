@@ -6,7 +6,7 @@ import reactLogo from "./assets/react.svg";
 
 const App = () => {
   const content = "Learn React.js by building projects!";
-  const content1 = "This is some additional data.";
+  // const content1 = "This is some additional data.";
   const age = 18;
   const data = {
     name: "John Doe",
