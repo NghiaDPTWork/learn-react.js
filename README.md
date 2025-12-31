@@ -1,4 +1,4 @@
-# React Ultimate với Javascript (Practice Repo)
+# React Javascript (Practice Repo)
 
 Chào mừng đến với repository thực hành của khóa học **"React Ultimate với Javascript"**. Đây là nơi tôi lưu trữ mã nguồn, ghi chú và các bài tập thực hành theo lộ trình của khóa học để xây dựng nền tảng vững chắc về ReactJS.
 
