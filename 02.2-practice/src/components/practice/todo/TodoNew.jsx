@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-/*
-  Lấy props trong function component
-*/
 const TodoNew = ({ addNewTodo }) => {
   /* 
       State : Trạng thái (Data)
@@ -16,7 +13,7 @@ const TodoNew = ({ addNewTodo }) => {
 
   // fire : Khai hỏa (Trigger)
   const handleClick = () => {
-    console.log("Value Input: ", valueInput);
+    addNewTodo("Todo Item", valueInput);
   };
 
   // Mình đã lấy được ô input
@@ -30,7 +27,6 @@ const TodoNew = ({ addNewTodo }) => {
         <input
           type="text"
           placeholder="Add a new task..."
-          // Run đi rồi mở console lên xem kết quả
           onChange={() => handleOnChange(event.target.value)}
         />
         <button style={{ cursor: "pointer" }} onClick={handleClick}>
