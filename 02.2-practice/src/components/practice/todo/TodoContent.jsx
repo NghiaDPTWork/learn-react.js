@@ -4,7 +4,7 @@
 
   => Ta rút ra rằng 
      + Cái gì mà cha muốn truyền lại cho con => props
-     + Cái gì àm thay đổi theo thời gian thực => state
+     + Cái gì mà thay đổi theo thời gian thực => state
 */
 
 const TodoContent = ({ age, todoList, ...props }) => {
