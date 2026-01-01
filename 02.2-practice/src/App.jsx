@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const App = () => {
   const [todoList, setTodoList] = useState([
-    { id: 1, name: "Learning React Design Pattern" },
-    { id: 2, name: "Taking a walk" },
-    { id: 3, name: "Cooking dinner" },
-    { id: 4, name: "Meditation" },
+    // { id: 1, name: "Learning React Design Pattern" },
+    // { id: 2, name: "Taking a walk" },
+    // { id: 3, name: "Cooking dinner" },
+    // { id: 4, name: "Meditation" },
   ]);
 
   // Hàm này chưa thực sự tối ưu
