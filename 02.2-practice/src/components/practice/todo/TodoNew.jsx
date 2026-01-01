@@ -9,11 +9,15 @@ const TodoNew = ({ addNewTodo }) => {
       Kỹ thuật destrucuring array
       Cú pháp: const [tên_state, hàm_cập_nhật_state] = useState(giá_trị_ban_đầu);
   */
-  const [valueInput, setValueInput] = useState("Initial Value");
+  const [valueInput, setValueInput] = useState("Học bài banh xác ....");
 
   // fire : Khai hỏa (Trigger)
   const handleClick = () => {
-    addNewTodo("Todo Item", valueInput);
+    addNewTodo(valueInput);
+    // Nếu khôgn có dòng này thì nó sẽ không
+    //  xóa nội dung trong ô input khi đã thêm todo rồi
+    // comment lại để xem thử
+    setValueInput("");
   };
 
   // Mình đã lấy được ô input
@@ -26,14 +30,14 @@ const TodoNew = ({ addNewTodo }) => {
       <div className="todo-new">
         <input
           type="text"
-          placeholder="Add a new task..."
+          placeholder="Add a new task ..."
+          value={valueInput}
           onChange={() => handleOnChange(event.target.value)}
         />
         <button style={{ cursor: "pointer" }} onClick={handleClick}>
           Add Todo
         </button>
       </div>
-      <div style={{ color: "black" }}>My text input = {valueInput}</div>
     </div>
   );
 };

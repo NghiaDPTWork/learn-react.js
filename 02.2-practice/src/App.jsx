@@ -6,18 +6,11 @@ import reactLogo from "./assets/react.svg";
 import { useState } from "react";
 
 const App = () => {
-  const content = "Learn React.js by building projects!";
-  // const content1 = "This is some additional data.";
-  const age = 18;
-  const data = {
-    name: "John Doe",
-    age: 30,
-    city: "New York",
-  };
   const [todoList, setTodoList] = useState([
     { id: 1, name: "Learning React Design Pattern" },
-    { id: 2, name: "CSS Styling Practice" },
-    { id: 3, name: "Watching youtube" },
+    { id: 2, name: "Taking a walk" },
+    { id: 3, name: "Cooking dinner" },
+    { id: 4, name: "Meditation" },
   ]);
 
   // Hàm này chưa thực sự tối ưu
@@ -25,11 +18,12 @@ const App = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const addNewTodo = (name, content) => {
+  const addNewTodo = (name) => {
     const newTodo = {
       id: randomIntFromInterval(todoList.length, 1000),
-      name: `${name} - ${content}`,
+      name: `${name}`,
     };
+    alert("New Todo Added: " + name);
     // Kỹ thuật Rest Operator
     setTodoList([...todoList, newTodo]);
     // Không nên viết như sau
@@ -44,18 +38,9 @@ const App = () => {
   return (
     <div className="todo-container">
       <div className="todo-title">Todo List</div>
-      <TodoNew
-        addNewTodo={addNewTodo}
-        //
-      />
-      <TodoContent
-        content={content}
-        // content={content1}
-        age={age}
-        data={data}
-        todoList={todoList}
-      />
-      <div className="todo-img">
+      <TodoNew addNewTodo={addNewTodo} />
+      <TodoContent todoList={todoList} />
+      <div className="todo-logo">
         <img src={reactLogo} alt="React Logo" />
       </div>
       <TodoFooter />

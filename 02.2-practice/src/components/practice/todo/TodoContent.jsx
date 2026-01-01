@@ -7,43 +7,21 @@
      + Cái gì mà thay đổi theo thời gian thực => state
 */
 
-const TodoContent = ({ age, todoList, ...props }) => {
-  console.log("Props received in TodoContent: ", { age, ...props });
-  /* 
-    Kết quả: {
-              content: "Learn React.js by building projects!",
-              age: 18,
-              data: {…}
-            }
-    
-    => Chúng ta đã nhận được props được truyền từ component cha (App.jsx)
-    => và được truyền dưới dạng một object tổng. 
-    Trong đó, object này sẽ có các cặp key-value tương ứng với
-      -> content : "Learn React.js by building projects!",
-        Key: content
-        Value: "Learn React.js by building projects!"
-    
-    { name, age, data, ...props }: được hiểu là 
-     const { name, age, data, ...props } = props;
-     const name = props.name;
-      const age = props.age;
-      const data = props.data;
-      ...props: chứa các props còn lại (nếu có)
-      - Ưu và nhược điểm của cách này:
-        + Ưu điểm: Dễ dàng lấy trực tiếp các props 
-        cần thiết mà không cần phải truy cập qua object 
-        props nhiều lần.
-        + Nhược điểm: Nếu có quá nhiều props,
-         việc liệt kê tất cả trong tham số hàm 
-         có thể làm cho hàm trở nên dài dòng và khó đọc.
-         
-  */
+const TodoContent = ({ todoList, ...props }) => {
+  console.log("Props received in TodoContent: ", { todoList, ...props });
   return (
     <div className="todo-content">
-      <div className="todo-item"> My age is a {age} </div>
-      <div className="todo-item">Learning React Design Pattern</div>
-      <div className="todo-item">CSS Styling Practice</div>
-      <div className="todo-item">{JSON.stringify(todoList)}</div>
+      {todoList.map((item, index) => {
+        const todo = item;
+        return (
+          <div className="todo-item">
+            <div key={index} className="todo-row">
+              {todo.id} - {todo.name}
+            </div>
+            <button className="btn-delete">Delete</button>
+          </div>
+        );
+      })}
     </div>
   );
 };
