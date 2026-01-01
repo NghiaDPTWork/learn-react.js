@@ -57,6 +57,7 @@ const TodoContent = ({ todoList, ...props }) => {
             7. Vậy key là để cho Dev dùng hay cho React dùng?
                 => Key là để React sử dụng trong quá trình Reconciliation.
           */
+
           // Cái div này dùng bọc lại để chia layout cho dễ nha !!!
           <div key={todo.id} className="todo-item">
             <div className="todo-row">
