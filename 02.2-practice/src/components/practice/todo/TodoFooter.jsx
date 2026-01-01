@@ -1,7 +1,9 @@
-const TodoFooter = () => {
+const TodoFooter = ({ todoList, ...props }) => {
   return (
     <div className="todo-footer">
-      <span>0 items left</span>
+      <span>
+        <b>{todoList.length}</b> items left
+      </span>
       <button>Clear Completed</button>
     </div>
   );
