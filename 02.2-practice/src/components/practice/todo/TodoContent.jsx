@@ -1,9 +1,14 @@
 /*
   Để nhận props trong function component,
   ta truyền props vào tham số của hàm
+
+  => Ta rút ra rằng 
+     + Cái gì mà cha muốn truyền lại cho con => props
+     + Cái gì àm thay đổi theo thời gian thực => state
 */
 
-const TodoContent = ({ age, ...props }) => {
+const TodoContent = ({ age, todoList, ...props }) => {
+  console.log("Props received in TodoContent: ", { age, ...props });
   /* 
     Kết quả: {
               content: "Learn React.js by building projects!",
@@ -38,6 +43,7 @@ const TodoContent = ({ age, ...props }) => {
       <div className="todo-item"> My age is a {age} </div>
       <div className="todo-item">Learning React Design Pattern</div>
       <div className="todo-item">CSS Styling Practice</div>
+      <div className="todo-item">{JSON.stringify(todoList)}</div>
     </div>
   );
 };
