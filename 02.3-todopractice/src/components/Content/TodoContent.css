@@ -1,0 +1,70 @@
+/* TodoContent Component Styles */
+.todo-item {
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.todo-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.todo-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+
+.todo-item-wrapper:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.todo-item-wrapper:last-child {
+  border-bottom: 1px solid #ddd;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.todo-item-content {
+  flex: 1;
+  color: #333;
+  font-size: 16px;
+}
+
+.todo-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-item-actions button {
+  padding: 6px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Edit Button */
+.todo-item-actions .btn-edit {
+  background: #ffc107;
+  color: #333;
+}
+
+.todo-item-actions .btn-edit:hover {
+  background: #e0a800;
+}
+
+/* Delete Button */
+.todo-item-actions .btn-delete {
+  background: #dc3545;
+  color: white;
+}
+
+.todo-item-actions .btn-delete:hover {
+  background: #c82333;
+}

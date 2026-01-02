@@ -1,0 +1,14 @@
+/* Header Component Styles */
+header {
+  background: #28a745;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #1e7e34;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: normal;
+  color: white;
+  margin: 0;
+}

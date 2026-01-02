@@ -1,0 +1,13 @@
+/* Logo Component Styles */
+.logo-container {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.logo-container img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
