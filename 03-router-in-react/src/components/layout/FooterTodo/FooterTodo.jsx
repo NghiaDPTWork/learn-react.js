@@ -1,6 +1,6 @@
-import "./Footer.css";
+import "./FooterTodo.css";
 
-const Footer = ({ todoList }) => {
+const FooterTodo = ({ todoList }) => {
   return (
     <footer>
       <div className="footer-content">
@@ -13,4 +13,4 @@ const Footer = ({ todoList }) => {
   );
 };
 
-export default Footer;
+export default FooterTodo;

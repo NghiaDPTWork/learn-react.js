@@ -1,9 +1,11 @@
 import { useState } from "react";
 import TodoInput from "./components/Content/TodoInput";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+import Footer from "./components/layout/Footer/Footer";
+import Header from "./components/layout/Header/Header";
 import Logo from "./components/Logo/Logo";
 import TodoContent from "./components/Content/TodoContent";
+import HeaderTodo from "./components/layout/HeaderTodo/HeaderTodo";
+import FooterTodo from "./components/layout/FooterTodo/FooterTodo";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -39,12 +41,13 @@ function App() {
       <div className="container">
         <Header />
 
+        <HeaderTodo />
         <TodoInput handleAddTodo={handleAddTodo} />
         <TodoContent todoList={todoList} handleDelete={handleDelete} />
-
         {todoList.length === 0 && <Logo />}
+        <FooterTodo todoList={todoList} />
 
-        <Footer todoList={todoList} />
+        <Footer />
       </div>
     </>
   );

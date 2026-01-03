@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/react.svg";
 import "./Logo.css";
 
 const Logo = ({ ...props }) => {
