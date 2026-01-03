@@ -54,7 +54,7 @@
 }
 
 .navbar-menu a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 15px;
   left: 18px;
