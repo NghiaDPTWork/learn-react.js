@@ -1,31 +1,25 @@
 /* TodoContent Component Styles */
 .todo-item {
-  padding: 0 40px 24px;
+  padding: 0 30px 20px;
   background: white;
-}
-
-.todo-list {
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 .todo-item-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 24px;
-  background: white;
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
 }
 
 .todo-item-wrapper:hover {
   border-color: #28a745;
-  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
-  transform: translateX(4px);
+  background: white;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.1);
 }
 
 .todo-item-wrapper:last-child {
@@ -35,44 +29,30 @@
 .todo-item-content {
   flex: 1;
   color: #212529;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  padding-right: 16px;
 }
 
 .todo-item-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .todo-item-actions button {
-  padding: 10px 24px;
-  font-size: 14px;
-  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 13px;
+  border-radius: 6px;
   font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-/* Edit Button */
-.todo-item-actions .btn-edit {
-  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
-  color: #212529;
-  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
-}
-
-.todo-item-actions .btn-edit:hover {
-  background: linear-gradient(135deg, #ffb300 0%, #ffc107 100%);
-  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+  transition: all 0.2s ease;
 }
 
 /* Delete Button */
 .todo-item-actions .btn-delete {
-  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  background: #dc3545;
   color: white;
-  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
 }
 
 .todo-item-actions .btn-delete:hover {
-  background: linear-gradient(135deg, #c82333 0%, #dc3545 100%);
-  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+  background: #c82333;
+  transform: translateY(-1px);
 }

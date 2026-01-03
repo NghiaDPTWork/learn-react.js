@@ -44,7 +44,7 @@ input {
 /* Container */
 .container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 30px auto;
   background: white;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);

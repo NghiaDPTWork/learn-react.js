@@ -6,6 +6,7 @@ import Logo from "./components/Logo/Logo";
 import TodoContent from "./components/Content/TodoContent";
 import HeaderTodo from "./components/layout/HeaderTodo/HeaderTodo";
 import FooterTodo from "./components/layout/FooterTodo/FooterTodo";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -38,17 +39,22 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <Header />
+      <Header />
+      {/*
+         Ta định nghĩa Outlet ở đây nha
+         Dùng để định nghĩa vị trí render content của con
+       */}
+      <Outlet />
 
+      <div className="container">
         <HeaderTodo />
         <TodoInput handleAddTodo={handleAddTodo} />
         <TodoContent todoList={todoList} handleDelete={handleDelete} />
         {todoList.length === 0 && <Logo />}
         <FooterTodo todoList={todoList} />
-
-        <Footer />
       </div>
+
+      <Footer />
     </>
   );
 }
