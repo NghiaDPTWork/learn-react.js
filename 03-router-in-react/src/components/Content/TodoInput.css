@@ -1,0 +1,37 @@
+/* TodoInput Component Styles */
+.todo-input-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.todo-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.todo-input-wrapper input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.todo-input-wrapper input:focus {
+  border-color: #28a745;
+}
+
+.todo-input-wrapper button {
+  padding: 10px 30px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.todo-input-wrapper button:hover {
+  background: #218838;
+}

@@ -2,6 +2,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import "./index.css";
+import "./styles/global.css";
+import LoginPage from "./pages/login";
+import RegisterPage from "./pages/register";
+import UsersPage from "./pages/users";
+import ProductsPage from "./pages/product";
 
 const router = createBrowserRouter([
   // Cách định nghĩa - khái báo 1 đường dẫn mới
@@ -11,19 +17,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>Login</div>,
+    element: <LoginPage />,
   },
   {
     path: "/register",
-    element: <div>Register</div>,
+    element: <RegisterPage />,
   },
   {
     path: "/users",
-    element: <div>Users</div>,
+    element: <UsersPage />,
   },
   {
     path: "/products",
-    element: <div>Products</div>,
+    element: <ProductsPage />,
   },
 ]);
 

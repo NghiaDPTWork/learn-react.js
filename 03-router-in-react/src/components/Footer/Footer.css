@@ -1,0 +1,42 @@
+/* Footer Component Styles */
+footer {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 3px solid #dee2e6;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+footer p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+footer p b {
+  color: #28a745;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+footer button {
+  padding: 8px 20px;
+  background: #dc3545;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+footer button:hover {
+  background: #c82333;
+}

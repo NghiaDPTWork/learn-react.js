@@ -5,5 +5,6 @@
    - Nên việc điều hướng ta cần phải làm thủ công (muốn tự động |dùng sẵn thì dùng framework: Next.js)
 
    - Nhưng ở đây mình dùng react Router DOM (lib)
+     câu lệnh tải : npm i react-router
 
 2. Router là gì ?
