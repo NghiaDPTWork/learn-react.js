@@ -8,6 +8,7 @@ import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import UsersPage from "./pages/users";
 import ProductsPage from "./pages/product";
+import TodoApp from "./components/layout/TodoApp";
 
 const router = createBrowserRouter([
   /* 
@@ -22,6 +23,16 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
+      /*
+        Việc khai báo thêm này là 1 bước đệm 
+        => tiến hành đánh index thông báo cho react biết
+        những đứa con sau thì không kế thừa nguyên mẫu hết
+        phần UI của thằng cha
+      */
+      {
+        index: true,
+        element: <TodoApp />,
+      },
       {
         path: "/users",
         element: <UsersPage />,
