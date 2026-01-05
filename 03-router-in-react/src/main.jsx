@@ -7,12 +7,13 @@ import "./styles/global.css";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import UsersPage from "./pages/users";
-import ProductsPage from "./pages/product";
+import BookPage from "./pages/book";
 import TodoApp from "./components/layout/TodoApp";
+import ErrorPage from "./pages/error";
 
 const router = createBrowserRouter([
   /* 
-    Cách định nghĩa - khái báo 1 đường dẫn mới
+    Cách định nghĩa - khai báo 1 đường dẫn mới
     Việc gộp users và product vào để nói với React rằng
     2 route đó với App có mối quan hệ cha con 
     => Từ đó t có thể chia sẻ tài nguyên (data, navbar, footer, ...)
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       /*
         Việc khai báo thêm này là 1 bước đệm 
@@ -38,8 +40,8 @@ const router = createBrowserRouter([
         element: <UsersPage />,
       },
       {
-        path: "/product",
-        element: <ProductsPage />,
+        path: "/book",
+        element: <BookPage />,
       },
     ],
   },
