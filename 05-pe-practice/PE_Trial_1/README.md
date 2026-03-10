@@ -204,16 +204,68 @@ onClick={() => navigate(`/se194670/lessons/${lesson.id}`)}
 
 ### 4️⃣ Trang All Lessons (Danh sách đầy đủ)
 
-- **Đường dẫn:** `/[mssv]/all-lessons`
-- **Giao diện:** Hiển thị dạng **Danh sách (List)** hoặc **Bảng (Table)**.
-- **Yêu cầu:** Sắp xếp tự động theo `id` giảm dần. Có biểu tượng/nút **Edit** và **Delete**.
+Mục tiêu: Hiển thị toàn bộ danh sách bài học bằng bảng (Table) và tự động sắp xếp.
+
+#### Bước 1: Gọi API và Sắp xếp dữ liệu
+
+Dữ liệu cần được sắp xếp theo `id` giảm dần sau khi lấy từ API:
+
+```javascript
+useEffect(() => {
+  axios.get(API_URL).then((res) => {
+    // SẮP XẾP: b.id - a.id để đưa ID lớn lên đầu
+    const sorted = res.data.sort((a, b) => b.id - a.id);
+    setLessons(sorted);
+  });
+}, []);
+```
+
+#### Bước 2: Hiển thị bảng dữ liệu (Table)
+
+Sử dụng component `Table` của **React-Bootstrap**:
+
+- `striped bordered hover`: Các thuộc tính giúp bảng đẹp và dễ nhìn hơn.
+- Mỗi hàng (`tr`) cần có các cột: ID, Title, Level, Time và Actions.
+
+#### Bước 3: Thêm nút chức năng (Edit/Delete)
+
+- Tạo các `<Button>` hoặc biểu tượng cho cột Actions.
+- **Lưu ý quan trọng:** Sử dụng `e.stopPropagation()` để khi nhấn vào nút Sửa/Xóa, ứng dụng không bị chuyển hướng nhầm sang trang Chi tiết.
+
+#### Bước 4: Điều hướng chi tiết
+
+- Khi click vào bất kỳ cột thông tin nào trong hàng (trừ cột Actions), gọi `navigate` đến đường dẫn `/se194670/lessons/${lesson.id}`.
 
 ### 5️⃣ Trang Completed Lessons (Bài tập đã xong)
 
-- **Đường dẫn:** `/[mssv]/completed-lessons`
-- **Logic:** Chỉ hiển thị các bài học có `isCompleted === true`.
-- **Giao diện:** Tương tự trang All Lessons, hiển thị Hình ảnh, Tiêu đề, Cấp độ.
-- **Yêu cầu:** Sắp xếp theo `id` giảm dần.
+Mục tiêu: Hiển thị danh sách các bài học đã hoàn thành (`isCompleted === true`).
+
+#### Bước 1: Lọc và Sắp xếp dữ liệu
+
+Tương tự trang All Lessons, nhưng cần thêm bước lọc dữ liệu:
+
+```javascript
+useEffect(() => {
+  axios.get(API_URL).then((res) => {
+    // 1. LỌC: Chỉ lấy các bài học có isCompleted là true
+    const completed = res.data.filter((item) => item.isCompleted);
+    // 2. SẮP XẾP: Giảm dần theo id
+    const sorted = completed.sort((a, b) => b.id - a.id);
+    setLessons(sorted);
+  });
+}, []);
+```
+
+#### Bước 2: Hiển thị giao diện List/Table
+
+Theo yêu cầu đề bài, hiển thị: **lessonTitle**, **level**, và **lessonImage**.
+
+- Sử dụng `Table` để trình bày gọn gàng.
+- Hiển thị hình ảnh bằng thẻ `<img>` với kích thước thu nhỏ.
+
+#### Bước 3: Điều hướng
+
+Click vào bất kỳ dòng nào trên bảng để chuyển hướng sang trang chi tiết bài học.
 
 ---
 
