@@ -1,13 +1,15 @@
-import Container from "react-bootstrap/Container";
 import "./App.css";
-import MyNavbar from "./components/MyNavbar";
-import MyRoutes from "./components/MyRoutes";
 
 function App() {
   return (
     <div className="App">
-      <MyNavbar />
-      <MyRoutes />
+      <div className="container mt-5">
+        <h1 className="text-center">PE FER202</h1>
+        <p className="text-center">API URL: {import.meta.env.VITE_API_URL}</p>
+        <div className="alert alert-success text-center">
+          Project setup and API connection ready!
+        </div>
+      </div>
     </div>
   );
 }
