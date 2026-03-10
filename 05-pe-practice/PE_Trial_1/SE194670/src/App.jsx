@@ -3,6 +3,7 @@ import MyNavbar from "./components/MyNavbar";
 import Home from "./pages/Home";
 import AllLessons from "./pages/AllLessons";
 import CompletedLessons from "./pages/CompletedLessons";
+import LessonDetail from "./pages/LessonDetail";
 import "./App.css";
 
 function App() {
@@ -16,10 +17,7 @@ function App() {
           path="/se194670/completed-lessons"
           element={<CompletedLessons />}
         />
-        <Route
-          path="/se194670/lessons/:id"
-          element={<div>Lesson Detail Page (Task 3)</div>}
-        />
+        <Route path="/se194670/lessons/:id" element={<LessonDetail />} />
       </Routes>
     </div>
   );

@@ -269,34 +269,63 @@ Click vào bất kỳ dòng nào trên bảng để chuyển hướng sang trang
 
 ---
 
-## 🛠️ Task 3: Chức năng Chi tiết, Thêm, Sửa, Xóa (4.5 điểm)
+## Task 3: Chức năng Chi tiết, Thêm, Sửa, Xóa (4.5 điểm)
 
 Task này yêu cầu xử lý dữ liệu phức tạp hơn và quản lý form với Validation.
 
 ### 1️⃣ Trang Chi tiết Bài học (Lesson Detail)
-Hiển thị toàn bộ thông tin của một bài học cụ thể.
 
-*   **URL:** `/[mssv]/lessons/:id`
-*   **Kỹ thuật:**
-    1. Lấy ID từ URL bằng `useParams()`.
-    2. Gọi API chi tiết: `axios.get(`${API_URL}/${id}`)`.
-    3. **Định dạng thời gian:** Sử dụng `.toLocaleString()` để hiển thị số có dấu phẩy (Ví dụ: `1,200`).
-    ```javascript
-    {lesson.estimatedTime?.toLocaleString()} minutes
-    ```
+Mục tiêu: Hiển thị toàn bộ thông tin của một bài học cụ thể dựa trên ID từ URL.
+
+#### Bước 1: Khai báo tham số ID
+
+Sử dụng hook `useParams` từ `react-router` để nhận giá trị ID:
+
+```javascript
+import { useParams } from "react-router";
+const { id } = useParams();
+```
+
+#### Bước 2: Gọi API lấy chi tiết
+
+Sử dụng `axios` để lấy dữ liệu đúng của bài học đó:
+
+```javascript
+useEffect(() => {
+  axios.get(`${API_URL}/${id}`).then((res) => setLesson(res.data));
+}, [id]);
+```
+
+#### Bước 3: Định dạng số (Number Formatting)
+
+Đề bài yêu cầu `estimatedTime` phải có dấu phẩy ngăn cách. Sử dụng hàm:
+
+```javascript
+{
+  lesson.estimatedTime?.toLocaleString();
+}
+minutes;
+```
+
+#### Bước 4: Thiết kế giao diện
+
+- Sử dụng `Card` của Bootstrap để gom nhóm thông tin.
+- Hiển thị đầy đủ: Ảnh lớn, Tiêu đề, Badge (Completed/In Progress), Level, và Thời gian.
 
 ### 2️⃣ Thêm bài học mới (Add Lesson)
+
 Tạo form nhập liệu với các ràng buộc chặt chẽ.
 
-*   **Thư viện:** **Formik** (quản lý form) và **Yup** (kiểm tra lỗi - Validation).
-*   **Các quy tắc (Validation Rules):**
-    - Tất cả các trường là bắt buộc (`.required()`).
-    - `lessonTitle`: Phải có ít nhất 2 từ (Dùng Regex hoặc kiểm tra khoảng trắng).
-    - `lessonImage`: Phải là định dạng URL hợp lệ (`.url()`).
-    - `estimatedTime`: Phải là số (`.number()`).
-    - `level`: Chọn từ danh sách (N1 -> N5).
+- **Thư viện:** **Formik** (quản lý form) và **Yup** (kiểm tra lỗi - Validation).
+- **Các quy tắc (Validation Rules):**
+  - Tất cả các trường là bắt buộc (`.required()`).
+  - `lessonTitle`: Phải có ít nhất 2 từ (Dùng Regex hoặc kiểm tra khoảng trắng).
+  - `lessonImage`: Phải là định dạng URL hợp lệ (`.url()`).
+  - `estimatedTime`: Phải là số (`.number()`).
+  - `level`: Chọn từ danh sách (N1 -> N5).
 
 ### 3️⃣ Xóa bài học (Delete)
+
 Thực hiện tại trang All Lessons.
 
 1.  **Xác nhận:** Sử dụng `window.confirm("Bạn có chắc chắn muốn xóa không?")`.
@@ -304,6 +333,7 @@ Thực hiện tại trang All Lessons.
 3.  **Thông báo:** Sau khi thành công, hiển thị `alert("Xóa thành công!")` và tải lại danh sách bài học.
 
 ### 4️⃣ Cập nhật bài học (Update Lesson)
+
 Tương tự form Thêm nhưng cần lấy dữ liệu cũ đổ vào form.
 
 1.  **Lấy dữ liệu:** Khi click "Edit", gọi API lấy thông tin bài học theo ID.
@@ -311,6 +341,6 @@ Tương tự form Thêm nhưng cần lấy dữ liệu cũ đổ vào form.
 3.  **Gọi API Updata:** Sử dụng `axios.put(...)` để lưu các thay đổi.
 
 ---
+
 > [!IMPORTANT]
 > Hãy luôn kiểm tra Console Log để đảm bảo các yêu cầu API (GET, POST, PUT, DELETE) hoạt động chính xác.
-
