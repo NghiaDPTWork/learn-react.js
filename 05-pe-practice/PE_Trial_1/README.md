@@ -165,13 +165,42 @@ function App() {
 
 ### 3️⃣ Trang Home (Hiển thị chưa hoàn thành)
 
-Đây là trang mặc định khi truy cập ứng dụng.
+Mục tiêu: Hiển thị danh sách các bài học chưa xong dưới dạng lưới (Grid).
 
-- **Logic:**
-  1. Gọi API lấy danh sách bài học.
-  2. Lọc danh sách: `item.isCompleted === false`.
-- **Giao diện:** Sử dụng **Grid (Row/Col)** và **Card**. Mỗi thẻ bài hiển thị: Hình ảnh, Tiêu đề, Cấp độ, Thời gian.
-- **Sự kiện:** Click vào ảnh sẽ chuyển hướng sang trang chi tiết.
+#### Bước 1: Thiết lập State và gọi API
+
+Sử dụng `useState` để lưu danh sách và `useEffect` để gọi API khi trang vừa load:
+
+```javascript
+const [lessons, setLessons] = useState([]);
+const API_URL = import.meta.env.VITE_API_URL;
+
+useEffect(() => {
+  axios.get(API_URL).then((res) => {
+    // LỌC: Chỉ lấy các bài học có isCompleted là false
+    const uncompleted = res.data.filter((item) => !item.isCompleted);
+    setLessons(uncompleted);
+  });
+}, []);
+```
+
+#### Bước 2: Hiển thị giao diện Grid (Thẻ bài)
+
+Sử dụng các component `Row`, `Col`, `Card` của **React-Bootstrap**:
+
+- `Row xs={1} md={3}`: Hiển thị 1 cột trên mobile, 3 cột trên máy tính.
+- `Card.Img`: Hiển thị hình ảnh bài học.
+- `Card.Title`: Hiển thị tiêu đề.
+
+#### Bước 3: Di chuyển đến trang Chi tiết
+
+Sử dụng `useNavigate` của `react-router` để chuyển trang khi click vào ảnh:
+
+```javascript
+const navigate = useNavigate();
+// Trong Card.Img:
+onClick={() => navigate(`/se194670/lessons/${lesson.id}`)}
+```
 
 ### 4️⃣ Trang All Lessons (Danh sách đầy đủ)
 
