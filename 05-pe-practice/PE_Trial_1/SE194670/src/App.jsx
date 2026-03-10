@@ -1,15 +1,24 @@
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import AllLessons from "./pages/AllLessons";
+import CompletedLessons from "./pages/CompletedLessons";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <div className="container mt-5">
-        <h1 className="text-center">PE FER202</h1>
-        <p className="text-center">API URL: {import.meta.env.VITE_API_URL}</p>
-        <div className="alert alert-success text-center">
-          Project setup and API connection ready!
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/se194670/all-lessons" element={<AllLessons />} />
+        <Route
+          path="/se194670/completed-lessons"
+          element={<CompletedLessons />}
+        />
+        <Route
+          path="/se194670/lessons/:id"
+          element={<div>Lesson Detail Page (Task 3)</div>}
+        />
+      </Routes>
     </div>
   );
 }

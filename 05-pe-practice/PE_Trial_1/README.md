@@ -55,3 +55,92 @@ VITE_API_URL=https://[LINK_API_CUA_BAN]/[TEN_RESOURCE]
 > **Nếu code trực tiếp link vào bài làm sẽ bị 0 ĐIỂM (INVALID WORK).**
 
 ---
+
+## Task 2: Giao diện và Điều hướng (4.0 điểm)
+
+Task này tập trung vào việc tạo các trang và kết nối chúng bằng menu điều hướng.
+
+### 1️⃣ Cấu trúc điều hướng (Routing)
+
+Để cài đặt hệ thống chuyển trang, chúng ta thực hiện các bước sau:
+
+#### Bước 1: Tạo các trang (Pages) cơ bản
+
+Tạo các file tại thư mục `src/pages/` để làm đích đến cho các Route:
+
+- `Home.jsx`: Trang chủ hiển thị bài học chưa xong.
+- `AllLessons.jsx`: Trang danh sách tất cả bài học.
+- `CompletedLessons.jsx`: Trang danh sách bài học đã hoàn thành.
+
+#### Bước 2: Cấu hình Route trong `App.jsx`
+
+Sử dụng các component từ thư viện `react-router` để định nghĩa URL:
+
+```javascript
+import { Routes, Route } from "react-router";
+// Import các trang vừa tạo
+import Home from "./pages/Home";
+import AllLessons from "./pages/AllLessons";
+import CompletedLessons from "./pages/CompletedLessons";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/se194670/all-lessons" element={<AllLessons />} />
+      <Route
+        path="/se194670/completed-lessons"
+        element={<CompletedLessons />}
+      />
+    </Routes>
+  );
+}
+```
+
+#### Bước 3: Đảm bảo `BrowserRouter` đã bao bọc ứng dụng
+
+Kiểm tra file `src/main.jsx`, component `<App />` phải nằm bên trong `<BrowserRouter>`:
+
+```javascript
+createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+);
+```
+
+### 2️⃣ Tạo Navbar (Thanh điều hướng)
+
+Sử dụng **React-Bootstrap** để tạo menu chuẩn:
+
+- **Home**: Link về `/`
+- **All Lessons**: Link về `/se194670/all-lessons`
+- **Completed Lessons**: Link về `/se194670/completed-lessons`
+
+### 3️⃣ Trang Home (Hiển thị chưa hoàn thành)
+
+Đây là trang mặc định khi truy cập ứng dụng.
+
+- **Logic:**
+  1. Gọi API lấy danh sách bài học.
+  2. Lọc danh sách: `item.isCompleted === false`.
+- **Giao diện:** Sử dụng **Grid (Row/Col)** và **Card**. Mỗi thẻ bài hiển thị: Hình ảnh, Tiêu đề, Cấp độ, Thời gian.
+- **Sự kiện:** Click vào ảnh sẽ chuyển hướng sang trang chi tiết.
+
+### 4️⃣ Trang All Lessons (Danh sách đầy đủ)
+
+- **Đường dẫn:** `/[mssv]/all-lessons`
+- **Giao diện:** Hiển thị dạng **Danh sách (List)** hoặc **Bảng (Table)**.
+- **Yêu cầu:** Sắp xếp tự động theo `id` giảm dần. Có biểu tượng/nút **Edit** và **Delete**.
+
+### 5️⃣ Trang Completed Lessons (Bài tập đã xong)
+
+- **Đường dẫn:** `/[mssv]/completed-lessons`
+- **Logic:** Chỉ hiển thị các bài học có `isCompleted === true`.
+- **Giao diện:** Tương tự trang All Lessons, hiển thị Hình ảnh, Tiêu đề, Cấp độ.
+- **Yêu cầu:** Sắp xếp theo `id` giảm dần.
+
+---
+
+> [!TIP]
+> Hãy tạo thư mục `src/pages` để chứa các tệp giao diện chính và `src/components` để chứa Navbar.
