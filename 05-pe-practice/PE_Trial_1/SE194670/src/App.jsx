@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router";
+import MyNavbar from "./components/MyNavbar";
 import Home from "./pages/Home";
 import AllLessons from "./pages/AllLessons";
 import CompletedLessons from "./pages/CompletedLessons";
@@ -7,6 +8,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <MyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/se194670/all-lessons" element={<AllLessons />} />

@@ -111,11 +111,57 @@ createRoot(document.getElementById("root")).render(
 
 ### 2️⃣ Tạo Navbar (Thanh điều hướng)
 
-Sử dụng **React-Bootstrap** để tạo menu chuẩn:
+Sử dụng **React-Bootstrap** để tạo menu điều hướng chuẩn:
 
-- **Home**: Link về `/`
-- **All Lessons**: Link về `/se194670/all-lessons`
-- **Completed Lessons**: Link về `/se194670/completed-lessons`
+#### Bước 1: Tạo component `MyNavbar.jsx`
+
+Tạo file tại `src/components/MyNavbar.jsx`:
+
+- Sử dụng `<Navbar>`, `<Container>`, `<Nav>`.
+- **Quan trọng:** Sử dụng thuộc tính `as={Link}` và `to="..."` để tích hợp `react-router` vào Bootstrap Nav.
+
+```javascript
+import { Link } from "react-router";
+import { Navbar, Container, Nav } from "react-bootstrap";
+
+const MyNavbar = () => (
+  <Navbar bg="light" expand="lg">
+    <Container>
+      <Navbar.Brand as={Link} to="/">
+        Lesson App
+      </Navbar.Brand>
+      <Nav className="me-auto">
+        <Nav.Link as={Link} to="/">
+          Home
+        </Nav.Link>
+        <Nav.Link as={Link} to="/se194670/all-lessons">
+          All Lessons
+        </Nav.Link>
+        <Nav.Link as={Link} to="/se194670/completed-lessons">
+          Completed Lessons
+        </Nav.Link>
+      </Nav>
+    </Container>
+  </Navbar>
+);
+```
+
+#### Bước 2: Hiển thị Navbar trong `App.jsx`
+
+Import và đặt `<MyNavbar />` nằm ngoài `<Routes>` để nó luôn hiển thị ở mọi trang.
+
+```javascript
+import MyNavbar from "./components/MyNavbar";
+
+function App() {
+  return (
+    <div className="App">
+      <MyNavbar />
+      <Routes>{/* ... các Route ... */}</Routes>
+    </div>
+  );
+}
+```
 
 ### 3️⃣ Trang Home (Hiển thị chưa hoàn thành)
 
