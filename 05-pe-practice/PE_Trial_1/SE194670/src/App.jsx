@@ -5,6 +5,7 @@ import AllLessons from "./pages/AllLessons";
 import CompletedLessons from "./pages/CompletedLessons";
 import LessonDetail from "./pages/LessonDetail";
 import AddLesson from "./pages/AddLesson";
+import UpdateLesson from "./pages/UpdateLesson";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         />
         <Route path="/se194670/lessons/:id" element={<LessonDetail />} />
         <Route path="/se194670/add-lesson" element={<AddLesson />} />
+        <Route path="/se194670/update-lesson/:id" element={<UpdateLesson />} />
       </Routes>
     </div>
   );

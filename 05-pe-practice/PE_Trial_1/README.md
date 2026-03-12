@@ -395,11 +395,39 @@ const handleDelete = async (id) => {
 
 ### 4️⃣ Cập nhật bài học (Update Lesson)
 
-Tương tự form Thêm nhưng cần lấy dữ liệu cũ đổ vào form.
+Mục tiêu: Chỉnh sửa thông tin bài học đã có thông qua phương thức `PUT`.
 
-1.  **Lấy dữ liệu:** Khi click "Edit", gọi API lấy thông tin bài học theo ID.
-2.  **Khởi tạo Form:** Đưa dữ liệu vừa lấy vào `initialValues` của Formik.
-3.  **Gọi API Updata:** Sử dụng `axios.put(...)` để lưu các thay đổi.
+#### Bước 1: Lấy dữ liệu cũ
+Sử dụng `useParams` để lấy ID và gọi API chi tiết để đổ dữ liệu vào form:
+```javascript
+useEffect(() => {
+  axios.get(`${API_URL}/${id}`).then(res => {
+    formik.setValues(res.data); // Đổ dữ liệu vào Formik
+  });
+}, [id]);
+```
+
+#### Bước 2: Cấu hình Formik cho Update
+Tương tự trang Add Lesson nhưng phương thức gửi tin là `PUT`:
+```javascript
+onSubmit: async (values) => {
+  await axios.put(`${API_URL}/${id}`, values);
+  alert("Cập nhật thành công!");
+  navigate("/se194670/all-lessons");
+}
+```
+
+#### Bước 3: Điều hướng từ trang All Lessons
+Tại nút **Edit**, thực hiện chuyển hướng kèm theo ID của bài học:
+```javascript
+<Button onClick={(e) => {
+  e.stopPropagation();
+  navigate(`/se194670/update-lesson/${lesson.id}`);
+}}>
+  Edit
+</Button>
+```
+
 
 ---
 
