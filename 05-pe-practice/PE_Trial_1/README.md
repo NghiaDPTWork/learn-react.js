@@ -314,15 +314,50 @@ minutes;
 
 ### 2️⃣ Thêm bài học mới (Add Lesson)
 
-Tạo form nhập liệu với các ràng buộc chặt chẽ.
+Mục tiêu: Tạo form nhập liệu với các ràng buộc (Validation) chặt chẽ sử dụng Formik và Yup.
 
-- **Thư viện:** **Formik** (quản lý form) và **Yup** (kiểm tra lỗi - Validation).
-- **Các quy tắc (Validation Rules):**
-  - Tất cả các trường là bắt buộc (`.required()`).
-  - `lessonTitle`: Phải có ít nhất 2 từ (Dùng Regex hoặc kiểm tra khoảng trắng).
-  - `lessonImage`: Phải là định dạng URL hợp lệ (`.url()`).
-  - `estimatedTime`: Phải là số (`.number()`).
-  - `level`: Chọn từ danh sách (N1 -> N5).
+#### Bước 1: Khởi tạo Form với `useFormik`
+Sử dụng `useFormik` để quản lý trạng thái của các trường nhập liệu và sự kiện gửi form:
+```javascript
+const formik = useFormik({
+  initialValues: {
+    lessonTitle: "",
+    lessonImage: "",
+    level: "N5",
+    isCompleted: false,
+    estimatedTime: 0,
+  },
+  onSubmit: async (values) => {
+    await axios.post(API_URL, values);
+    alert("Thêm thành công!");
+    navigate("/se194670/all-lessons");
+  },
+});
+```
+
+#### Bước 2: Định nghĩa Validation Schema (Yup)
+Đây là phần quan trọng nhất để kiểm tra tính hợp lệ của dữ liệu:
+- **Title**: Phải có nhiều hơn 1 từ (sử dụng `.test()` để kiểm tra).
+- **Image**: Phải là URL hợp lệ.
+- **Time**: Phải là số dương.
+```javascript
+validationSchema: Yup.object({
+  lessonTitle: Yup.string()
+    .required("Bắt buộc")
+    .test("word-count", "Tiêu đề phải nhiều hơn 1 từ", 
+      value => value?.trim().split(/\s+/).length > 1),
+  lessonImage: Yup.string().url("URL không hợp lệ").required("Bắt buộc"),
+  estimatedTime: Yup.number().positive().required("Bắt buộc"),
+})
+```
+
+#### Bước 3: Thiết kế Giao diện Form
+Sử dụng các component của **React-Bootstrap**:
+- `Form.Control` kết hợp với `isInvalid` để hiển thị lỗi đỏ.
+- `Form.Control.Feedback` để hiển thị nội dung lỗi từ Formik.
+- `Form.Select` cho trường `level`.
+- `Form.Check` với `type="switch"` cho trường `isCompleted`.
+
 
 ### 3️⃣ Xóa bài học (Delete)
 

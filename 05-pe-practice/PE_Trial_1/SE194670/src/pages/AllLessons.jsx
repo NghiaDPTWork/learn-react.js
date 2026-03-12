@@ -8,18 +8,32 @@ const AllLessons = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    const fetchLessons = async () => {
-      try {
-        const response = await axios.get(API_URL);
-        const sortedLessons = response.data.sort((a, b) => b.id - a.id);
-        setLessons(sortedLessons);
-      } catch (error) {
-        console.error("Error fetching lessons:", error);
-      }
-    };
-    fetchLessons();
+  const fetchLessons = React.useCallback(async () => {
+    try {
+      const response = await axios.get(API_URL);
+      const sortedLessons = response.data.sort((a, b) => b.id - a.id);
+      setLessons(sortedLessons);
+    } catch (error) {
+      console.error("Error fetching lessons:", error);
+    }
   }, [API_URL]);
+
+  useEffect(() => {
+    fetchLessons();
+  }, [fetchLessons]);
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this lesson?")) {
+      try {
+        await axios.delete(`${API_URL}/${id}`);
+        alert("Lesson deleted successfully!");
+        fetchLessons();
+      } catch (error) {
+        console.error("Error deleting lesson:", error);
+        alert("Failed to delete lesson.");
+      }
+    }
+  };
 
   return (
     <Container className="mt-4">
@@ -56,7 +70,7 @@ const AllLessons = () => {
                   className="me-2"
                   onClick={(e) => {
                     e.stopPropagation();
-                    console.log("Edit lesson:", lesson.id);
+                    navigate(`/se194670/update-lesson/${lesson.id}`);
                   }}
                 >
                   Edit
@@ -66,7 +80,7 @@ const AllLessons = () => {
                   size="sm"
                   onClick={(e) => {
                     e.stopPropagation();
-                    console.log("Delete lesson:", lesson.id);
+                    handleDelete(lesson.id);
                   }}
                 >
                   Delete

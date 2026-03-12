@@ -23,6 +23,9 @@ const MyNavbar = () => {
             <Nav.Link as={Link} to="/se194670/completed-lessons">
               Completed Lessons
             </Nav.Link>
+            <Nav.Link as={Link} to="/se194670/add-lesson">
+              Add Lesson
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
