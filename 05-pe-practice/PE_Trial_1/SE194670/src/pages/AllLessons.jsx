@@ -8,26 +8,44 @@ const AllLessons = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
 
-  const fetchLessons = React.useCallback(async () => {
-    try {
-      const response = await axios.get(API_URL);
-      const sortedLessons = response.data.sort((a, b) => b.id - a.id);
-      setLessons(sortedLessons);
-    } catch (error) {
-      console.error("Error fetching lessons:", error);
-    }
+  useEffect(() => {
+    let isMounted = true;
+    const fetchLessons = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        if (isMounted && Array.isArray(response.data)) {
+          const sortedLessons = [...response.data].sort((a, b) => b.id - a.id);
+          setLessons(sortedLessons);
+        }
+      } catch (error) {
+        console.error("Error fetching lessons:", error);
+      }
+    };
+
+    fetchLessons();
+    return () => {
+      isMounted = false;
+    };
   }, [API_URL]);
 
-  useEffect(() => {
-    fetchLessons();
-  }, [fetchLessons]);
+  const fetchUpdatedList = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      if (Array.isArray(response.data)) {
+        const sortedLessons = [...response.data].sort((a, b) => b.id - a.id);
+        setLessons(sortedLessons);
+      }
+    } catch (error) {
+      console.error("Error refreshing lessons:", error);
+    }
+  };
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this lesson?")) {
       try {
         await axios.delete(`${API_URL}/${id}`);
         alert("Lesson deleted successfully!");
-        fetchLessons();
+        fetchUpdatedList();
       } catch (error) {
         console.error("Error deleting lesson:", error);
         alert("Failed to delete lesson.");

@@ -361,11 +361,37 @@ Sử dụng các component của **React-Bootstrap**:
 
 ### 3️⃣ Xóa bài học (Delete)
 
-Thực hiện tại trang All Lessons.
+Mục tiêu: Thực hiện xóa dữ liệu thông qua phương thức `DELETE` và cập nhật lại giao diện.
 
-1.  **Xác nhận:** Sử dụng `window.confirm("Bạn có chắc chắn muốn xóa không?")`.
-2.  **Gọi API:** Chạy lệnh `axios.delete(`${API_URL}/${id}`)`.
-3.  **Thông báo:** Sau khi thành công, hiển thị `alert("Xóa thành công!")` và tải lại danh sách bài học.
+#### Bước 1: Tạo hàm xử lý xóa (`handleDelete`)
+Hàm này cần được đặt trong component `AllLessons.jsx`:
+- Sử dụng `window.confirm` để ngăn chặn việc xóa nhầm.
+- Gọi API `axios.delete`.
+- Tải lại danh sách sau khi xóa thành công.
+
+```javascript
+const handleDelete = async (id) => {
+  if (window.confirm("Bạn có chắc muốn xóa không?")) {
+    await axios.delete(`${API_URL}/${id}`);
+    alert("Xóa thành công!");
+    fetchLessons(); // Gọi lại hàm lấy dữ liệu để cập nhật bảng
+  }
+};
+```
+
+#### Bước 2: Giao diện và Sự kiện
+- Tại nút **Delete**, thêm sự kiện `onClick`.
+- **Quan trọng:** Sử dụng `e.stopPropagation()` để click nút xóa không kích hoạt sự kiện click của cả dòng (tránh nhảy vào trang chi tiết).
+
+```javascript
+<Button variant="danger" onClick={(e) => {
+  e.stopPropagation();
+  handleDelete(lesson.id);
+}}>
+  Delete
+</Button>
+```
+
 
 ### 4️⃣ Cập nhật bài học (Update Lesson)
 
