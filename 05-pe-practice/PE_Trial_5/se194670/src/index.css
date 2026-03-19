@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Ribbon Container */
+.art-detail-container {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+/* Ribbon Styling */
+.ribbon-wrapper {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.ribbon {
+  font: bold 15px sans-serif;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 45px;
+  width: 220px;
+  background-color: #ff4757;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2ed573;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #57606f;
+  min-width: 150px;
+  display: inline-block;
+}
+
+.deal-badge {
+  background-color: #ffa502;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
