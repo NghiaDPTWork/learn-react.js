@@ -43,6 +43,7 @@ const LessonDetail = () => {
     );
   }
 
+  // Không đc dùng card trang detail
   return (
     <Container className="mt-4">
       <Button
